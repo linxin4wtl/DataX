@@ -1,0 +1,44 @@
+{
+  "job": {
+    "content": [
+      {
+        "reader": {
+          "name": "mysqlreader",
+          "parameter": {
+            "column": ["user_id"],
+            "connection": [
+              {
+                "jdbcUrl": ["jdbc:mysql://localhost:3306/ds_jdbc_0"],
+                "table": ["t_order_0"]
+              }
+            ],
+            "password": "root",
+            "username": "root",
+            "where": ""
+          }
+        },
+        "writer": {
+          "name": "mysqlwriter",
+          "writeMode": "insert",
+          "parameter": {
+            "column": ["user_id"],
+            "connection": [
+              {
+                "jdbcUrl": "jdbc:mysql://localhost:3306/ds_jdbc_1",
+                "table": ["t_order_1"]
+              }
+            ],
+            "password": "root",
+            "username": "root",
+            "where": ""
+          }
+        }
+      }
+    ],
+    "setting": {
+      "speed": {
+        "channel": 1
+      }
+    }
+  }
+}

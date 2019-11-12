@@ -16,8 +16,7 @@ public class MysqlReader extends Reader {
     private static final DataBaseType DATABASE_TYPE = DataBaseType.MySql;
 
     public static class Job extends Reader.Job {
-        private static final Logger LOG = LoggerFactory
-                .getLogger(Job.class);
+        private static final Logger LOG = LoggerFactory.getLogger(Job.class);
 
         private Configuration originalConfig = null;
         private CommonRdbmsReader.Job commonRdbmsReaderJob;
@@ -38,9 +37,9 @@ public class MysqlReader extends Reader {
         }
 
         @Override
-        public void preCheck(){
+        public void preCheck() {
             init();
-            this.commonRdbmsReaderJob.preCheck(this.originalConfig,DATABASE_TYPE);
+            this.commonRdbmsReaderJob.preCheck(this.originalConfig, DATABASE_TYPE);
 
         }
 
@@ -69,7 +68,7 @@ public class MysqlReader extends Reader {
         @Override
         public void init() {
             this.readerSliceConfig = super.getPluginJobConf();
-            this.commonRdbmsReaderTask = new CommonRdbmsReader.Task(DATABASE_TYPE,super.getTaskGroupId(), super.getTaskId());
+            this.commonRdbmsReaderTask = new CommonRdbmsReader.Task(DATABASE_TYPE, super.getTaskGroupId(), super.getTaskId());
             this.commonRdbmsReaderTask.init(this.readerSliceConfig);
 
         }
@@ -78,8 +77,7 @@ public class MysqlReader extends Reader {
         public void startRead(RecordSender recordSender) {
             int fetchSize = this.readerSliceConfig.getInt(Constant.FETCH_SIZE);
 
-            this.commonRdbmsReaderTask.startRead(this.readerSliceConfig, recordSender,
-                    super.getTaskPluginCollector(), fetchSize);
+            this.commonRdbmsReaderTask.startRead(this.readerSliceConfig, recordSender,  super.getTaskPluginCollector(), fetchSize);
         }
 
         @Override
